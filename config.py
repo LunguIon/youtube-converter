@@ -1,0 +1,2 @@
+BOT_TOKEN = "<YOUR_BOT_API_TOKEN>"
+TEMP_DOWNLOAD_PATH = "temp_files/"
