@@ -11,7 +11,7 @@ This Telegram bot allows users to download YouTube videos as MP3 or MP4 files.
 - Telegram Bot API Token
 
 ## Setup:
-1. Clone the repository: `git clone <repo_url>`
+1. Clone the repository: `git clone https://github.com/LunguIon/youtube-converter.git`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run the bot: `python bot.py`
 
