@@ -14,14 +14,11 @@ async def help_command(update: Update, context: CallbackContext) -> None:
 
 def main():
     try:
-        # Crează instanța de Application
         application = Application.builder().token(BOT_TOKEN).build()
 
-        # Adaugă handler pentru comenzi
         application.add_handler(CommandHandler("start", start))
         application.add_handler(CommandHandler("help", help_command))
 
-        # Pornește polling-ul
         application.run_polling()
 
     except Exception as e:
