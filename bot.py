@@ -3,7 +3,6 @@ from telegram.ext import Application, CommandHandler, CallbackContext, MessageHa
 from config import BOT_TOKEN
 import re
 
-# /start function
 async def start(update: Update, context: CallbackContext) -> None:
     await update.message.reply_text(
         f"Hi, {update.message.from_user.first_name}! 👋\n\n"
@@ -11,12 +10,10 @@ async def start(update: Update, context: CallbackContext) -> None:
         f"Just send me a valid YouTube link, and I'll take care of the rest! 🚀\n\n"
         f"If you need assistance, use the /help command for more information. 😊"
     )
-# validate link function
 def is_valid_youtube_url(url: str) -> bool:
     pattern = r"(https?://)?(www\.)?(youtube\.com|youtu\.be)/(watch\?v=|embed/|v/|.+\?v=)?[a-zA-Z0-9_-]{11}"
     return re.match(pattern, url) is not None
 
-# validate message function
 async def validate_youtube_url(update: Update, context: CallbackContext) -> None:
     user_message = update.message.text.strip()
 
@@ -31,8 +28,9 @@ async def validate_youtube_url(update: Update, context: CallbackContext) -> None
             await update.message.reply_text(
                 "❌ Invalid link! Please send a valid YouTube link.\n"
                 "Examples:\n"
-                "1️⃣ https://www.youtube.com/watch?v=12345678901\n"
-                "2️⃣ https://youtu.be/12345678901"
+                "1️⃣ https://youtu.be/glUHA2mypNs\n"
+                "2️⃣ https://youtu.be/msjhid1kTKM\n"
+                "3️⃣ https://youtu.be/dh72Dz0OqLk?list=PL55PvHOtffL68eYjCLAK6fnv9kZ5XIVZs"
             )
     except Exception as e:
         await update.message.reply_text("❌ An error occurred while validating the link. Please try again later.")
@@ -40,7 +38,6 @@ async def validate_youtube_url(update: Update, context: CallbackContext) -> None
 
 
 
-# /help function
 async def help_command(update: Update, context: CallbackContext) -> None:
     await update.message.reply_text(f"Comenzi disponibile:"
                                     f"\n/start - Salut!"
