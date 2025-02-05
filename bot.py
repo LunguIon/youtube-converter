@@ -75,19 +75,19 @@ async def download_mp3(youtube_url: str, save_path: str):
         return False
 
 
-async def download_mp4(youtube_url: str, save_path: str):
-    try:
-        ydl_opts = {
-            'outtmpl': f'{save_path}%(title)s.mp4',
-            'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4',
-            'merge_output_format': 'mp4',
-        }
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            ydl.download([youtube_url])
-        return True
-    except Exception as e:
-        print(f"Error downloading MP4: {e}")
-        return False
+# async def download_mp4(youtube_url: str, save_path: str):
+#     try:
+#         ydl_opts = {
+#             'outtmpl': f'{save_path}%(title)s.mp4',
+#             'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4',
+#             'merge_output_format': 'mp4',
+#         }
+#         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+#             ydl.download([youtube_url])
+#         return True
+#     except Exception as e:
+#         print(f"Error downloading MP4: {e}")
+#         return False
 
 
 async def download_video(update: Update, context: CallbackContext) -> None:
@@ -113,10 +113,10 @@ async def download_video(update: Update, context: CallbackContext) -> None:
             await query.edit_message_text("🔄 Downloading MP3 format...")
             success = await download_mp3(youtube_url, save_path)
             file_extension = "mp3"
-        elif query.data == "download_mp4":
-            await query.edit_message_text("🔄 Downloading MP4 format...")
-            success = await download_mp4(youtube_url, save_path)
-            file_extension = "mp4"
+        # elif query.data == "download_mp4":
+        #     await query.edit_message_text("🔄 Downloading MP4 format...")
+        #     success = await download_mp4(youtube_url, save_path)
+        #     file_extension = "mp4"
         else:
             await query.edit_message_text("❌ Invalid selection!")
             return
