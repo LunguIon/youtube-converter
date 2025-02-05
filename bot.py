@@ -78,7 +78,7 @@ async def download_mp3(youtube_url: str, save_path: str):
 async def download_mp4(youtube_url: str, save_path: str):
     try:
         ydl_opts = {
-            'outtmpl': f'{save_path}%(title)s.mp4',  
+            'outtmpl': f'{save_path}%(title)s.mp4',
             'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4',
             'merge_output_format': 'mp4',
         }
@@ -133,11 +133,15 @@ async def download_video(update: Update, context: CallbackContext) -> None:
         await query.edit_message_text("❌ An error occurred. Please try again later.")
         print(f"Error: {e}")
 
-
 async def help_command(update: Update, context: CallbackContext) -> None:
-    await update.message.reply_text(f"Comenzi disponibile:"
-                                    f"\n/start - Salut!"
-                                    f"\n/help - Lista comenzilor disponibile")
+    await update.message.reply_text(
+        "Available commands:"
+        "\n/start - Start the bot and receive a welcome message."
+        "\n/help - Get a list of available commands."
+        "\n\nThis bot allows you to download YouTube videos as MP3 or MP4."
+        "\nSimply send a YouTube link, and you will receive the file in your desired format."
+    )
+
 
 
 def main():
